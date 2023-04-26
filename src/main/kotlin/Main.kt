@@ -13,6 +13,7 @@ fun main(){
     println(triple.first)
     println(triple.second)
     println(triple.third)
+    // tudo posso
 
 
 
