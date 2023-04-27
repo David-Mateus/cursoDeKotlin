@@ -1,25 +1,23 @@
 fun main(){
-    // 1.copy so funciona com data class
-    val userA = User1("David", true);
-
-    //2. estrutura de dados simples
-        //pair - 2
-        //val coordenadas = Pair(10, "Tiago"); // o PAIR é um data class
-        val usuarioPeloId = 10 to "David";
-        println(usuarioPeloId.first)
-        println(usuarioPeloId.second)
-    //triple - 3
-    val triple = Triple(200,100, 1);
-    println(triple.first)
-    println(triple.second)
-    println(triple.third)
-    // tudo posso
-
-
-
+    // 2. abstract
+    /// 2.1 - classe abstrada é uma classe criada para dá as suas propriedades
+    /// as classes filhas, logo não hpa necessidade se ter uma instancia da superClasse
+    /// Evitar instancviar da clase pai
+    /// 2.2
 }
 
 
-//Obs: Quando utilizar data class - manipular estrutura de dados
-// O que importa é a declaração disso aqui
-data class User1(var name: String, var isAdmin: Boolean);
+abstract open class Pessoa(var name: String, var address: String){
+    protected var acessoBilioteca = false
+    fun description() = "Meu nome é : $name e meu endereço é $address, nivel de acesso : $acessoBilioteca";
+}
+
+// sem herança
+class Professor(name: String, address: String) : Pessoa(name, address){
+    init{
+        acessoBilioteca = true
+    }
+}
+class Aluno (var matriculaId: Int,  name: String,  address:String ) : Pessoa(name, address){
+
+}
