@@ -1,19 +1,33 @@
 //internal -> so é disponivel desse modulo. Restringir para pessoas de foras
 
-internal class Encordoamento(val numeroDeCordas: Int, val marca : String);
-open class Instrumento(var cor: String){
 
-     private lateinit var encordoamento: Encordoamento
+// class vó
+abstract class Instrumento(var nome: String){
+    // assinatura da função é a mesma
+    // so que o comportamento de afinar é diferente
+    abstract fun afinar()
+    fun tocar(){
 
-    fun console(){
-        println("Esse instrumento é da cor $cor, numero de cordas : ${encordoamento.numeroDeCordas}, marca: ${encordoamento.marca}")
     }
-    fun addEncodoamento(num:Int, marca :  String){
-        encordoamento = Encordoamento(num, marca);
+
+}
+// class mae
+abstract class  InstrumentoDeCorda(nome: String, var cordas : Int) : Instrumento(nome){
+    // não é obrigada a implemntar/difinir o comportamento da assinatura da funçao abstract
+}
+//classes filhas
+class Guitarra(nome : String) :InstrumentoDeCorda(nome, 6) {
+    override  fun afinar(){
+        println("AFINAA EM MI")
     }
 }
-class Guitarra(cor : String) : Instrumento(cor){
-    init{
-        addEncodoamento(6, "Nig")
+class Violino(nome:String): InstrumentoDeCorda(nome, 4){
+    override fun afinar() {
+        TODO("Not yet implemented")
+    }
+}
+class Flauta(nome:String) : Instrumento(nome){
+    override fun afinar(){
+        println("Afinada em DÓ")
     }
 }
