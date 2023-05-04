@@ -11,9 +11,15 @@ package OOP
 class User1(var name : String, var isAdmin : Boolean) {
         // Muito bom para inicializar coisa entre um constructor e outro
 
-        var label = "$name é admin do sistema:$isAdmin"
+        lateinit var lastName: String
+
+        companion object{ //propriedades e metodos da classe
+            //const se usa para tempo de compilação
+            const val MAX_NAME_LENGHT = 8; // padrao uppercase
+
+        }
         init {
-            println("Olá $name")
+            println(MAX_NAME_LENGHT)
         }
 
         constructor(name:String) : this(name, false){
@@ -25,6 +31,9 @@ class User1(var name : String, var isAdmin : Boolean) {
         fun updateName(name : String){
             this.name = name;
         }
+    fun outPut(){
+        println("$name $lastName $isAdmin ")
+    }
         fun printUpperCase(){
             println("Olá " + name.uppercase())
         }
